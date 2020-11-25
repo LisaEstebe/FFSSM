@@ -53,7 +53,7 @@ public class Licence {
      **/
     public boolean estValide(LocalDate d) {
          // TODO: Implémenter cette méthode
-        if (d.getDayOfYear()<=delivrance.getDayOfYear()+365){
+        if (d.isBefore(delivrance.plusYears(1))){
             return true;
         }
         else{
