@@ -53,7 +53,12 @@ public class Licence {
      **/
     public boolean estValide(LocalDate d) {
          // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        if (d.getDayOfYear()<=delivrance.getDayOfYear()+365){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }
