@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class Licence {
 
-    public Personne possesseur;
+    public Plongeur possesseur;
 
     public String numero;
 
@@ -17,7 +17,7 @@ public class Licence {
 
     public Club club;
 
-    public Licence(Personne possesseur, String numero, LocalDate delivrance, int niveau, Club club) {
+    public Licence(Plongeur possesseur, String numero, LocalDate delivrance, int niveau, Club club) {
         this.possesseur = possesseur;
         this.numero = numero;
         this.delivrance = delivrance;
@@ -25,7 +25,7 @@ public class Licence {
         this.club = club;
     }
 
-    public Personne getPossesseur() {
+    public Plongeur getPossesseur() {
         return possesseur;
     }
 
