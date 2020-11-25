@@ -50,7 +50,17 @@ public class Plongee {
 	 */
 	public boolean estConforme() {
 		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
-	}
+                
+		for (Plongeur participant : myPlongeurs){
+                   int nbLicences=participant.myLicences.size();
+                   for(int i = nbLicences-1;i<0;i--){
+                       if(participant.myLicences.get(i).estValide(this.getDate())){
+                           break;
+                       }
+                   }
+                   return false;
+                }
+                return true;
+        }
 
 }
