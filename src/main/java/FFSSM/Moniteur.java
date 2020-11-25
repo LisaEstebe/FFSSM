@@ -4,6 +4,7 @@
 package FFSSM;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,9 +22,12 @@ public class Moniteur extends Plongeur {
      * ce moniteur n'a pas d'employeur.
      * @return l'employeur actuel de ce moniteur sous la forme d'un Optional
      */
-    public Optional<Club> employeurActuel() {
+    public Optional<Club> employeurActuel() throws Exception{
          // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+         if(emplois.isEmpty()) throw new Exception("Aucun emploi");
+         if (emplois.get(emplois.size()-1)).estTerminee()) throw new Exception("Dernier emploi terminé");
+         return Optional.ofNullable(emplois.get(emplois.size()-1.getEmployeur());
+         
     }
     
     /**
@@ -38,7 +42,7 @@ public class Moniteur extends Plongeur {
 
     public List<Embauche> emplois() {
          // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+            List<Embauche> myEmplois= new LinkedList<>();
     }
 
 }
