@@ -11,8 +11,7 @@ import java.util.Optional;
 public class Moniteur extends Plongeur {
 
     public int numeroDiplome;
-    public List<Moniteur> lesMoniteurs= new LinkedList<>();
-    public List<Embauche> lesEmbauches= new LinkedList<>();
+    public List<Embauche> myEmbauches= new LinkedList<>();
 
     public Moniteur(String numeroINSEE, String nom, String prenom, String adresse, String telephone, LocalDate naissance, int niveau, int numeroDiplome) {
         super(numeroINSEE, nom, prenom, adresse, telephone, naissance, niveau);
@@ -42,15 +41,11 @@ public class Moniteur extends Plongeur {
          // TODO: Implémenter cette méthode
         Moniteur m;
         Embauche embauche = new Embauche (debutNouvelle, this , employeur);
-        lesEmbauches.add(embauche);	    
+        myEmbauches.add(embauche);	    
     }
 
     public List<Embauche> emplois() {
          // TODO: Implémenter cette méthode
-        return lesEmbauches;
+        return myEmbauches;
         }
-    
-    public List<Moniteur> getMoniteur(){
-        return lesMoniteurs;
-    }
 }
