@@ -78,6 +78,5 @@ public class Embauche {
     public LocalDate getDebut() {
         return debut;
     }
-
     
 }
