@@ -26,9 +26,13 @@ public class Moniteur extends Plongeur {
      */
     public Optional<Club> employeurActuel() throws Exception{
          // TODO: Implémenter cette méthode
-        /* if(emplois.isEmpty()) throw new Exception("Aucun emploi");
-         if (emplois.get(emplois.size()-1)).estTerminee()) throw new Exception("Dernier emploi terminé");
-         return Optional.ofNullable(emplois.get(emplois.size()-1.getEmployeur());*/
+      /*  if(emplois().isEmpty()) 
+            throw new Exception("Aucun emploi");
+        
+        if (emplois().get(emplois().size()-1)).estTerminee) 
+            throw new Exception("Dernier emploi terminé");
+            
+        return Optional.ofNullable(emplois().get(emplois().size()-1.getEmployeur());*/
          
     }
     
@@ -39,7 +43,9 @@ public class Moniteur extends Plongeur {
      */
     public void nouvelleEmbauche(Club employeur, LocalDate debutNouvelle) {   
          // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");	    
+        Moniteur m;
+        Embauche embauche = new Embauche (debutNouvelle, this , employeur);
+        lesEmbauches.add(embauche);	    
     }
 
     public List<Embauche> emplois() {
