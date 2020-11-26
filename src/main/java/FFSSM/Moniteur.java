@@ -11,6 +11,8 @@ import java.util.Optional;
 public class Moniteur extends Plongeur {
 
     public int numeroDiplome;
+    public List<Moniteur> lesMoniteurs= new LinkedList<>();
+    public List<Embauche> lesEmbauches= new LinkedList<>();
 
     public Moniteur(String numeroINSEE, String nom, String prenom, String adresse, String telephone, LocalDate naissance, int niveau, int numeroDiplome) {
         super(numeroINSEE, nom, prenom, adresse, telephone, naissance, niveau);
@@ -24,9 +26,9 @@ public class Moniteur extends Plongeur {
      */
     public Optional<Club> employeurActuel() throws Exception{
          // TODO: Implémenter cette méthode
-         if(emplois.isEmpty()) throw new Exception("Aucun emploi");
+        /* if(emplois.isEmpty()) throw new Exception("Aucun emploi");
          if (emplois.get(emplois.size()-1)).estTerminee()) throw new Exception("Dernier emploi terminé");
-         return Optional.ofNullable(emplois.get(emplois.size()-1.getEmployeur());
+         return Optional.ofNullable(emplois.get(emplois.size()-1.getEmployeur());*/
          
     }
     
@@ -42,7 +44,10 @@ public class Moniteur extends Plongeur {
 
     public List<Embauche> emplois() {
          // TODO: Implémenter cette méthode
-            List<Embauche> myEmplois= new LinkedList<>();
+        return lesEmbauches;
+        }
+    
+    public List<Moniteur> getMoniteur(){
+        return lesMoniteurs;
     }
-
 }
