@@ -26,15 +26,12 @@ public class Moniteur extends Plongeur {
      */
     public Optional<Club> employeurActuel() throws Exception{
          // TODO: Implémenter cette méthode
-      /*  if(emplois().isEmpty()) 
+      if(emplois().isEmpty()) 
             throw new Exception("Aucun emploi");
-        
-        if (emplois().get(emplois().size()-1)).estTerminee) 
+      if (emplois().get((emplois().size())-1).estTerminee()) 
             throw new Exception("Dernier emploi terminé");
-            
-        return Optional.ofNullable(emplois().get(emplois().size()-1.getEmployeur());*/
-         
-    }
+      return Optional.ofNullable(emplois().get((emplois().size())-1).getEmployeur());
+      }
     
     /**
      * Enregistrer une nouvelle embauche pour cet employeur
