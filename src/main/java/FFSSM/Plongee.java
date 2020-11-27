@@ -21,13 +21,12 @@ public class Plongee {
         
         public List<Plongeur> myPlongeurs = new LinkedList<>();
 
-	public Plongee(Site lieu, Moniteur chefDePalanquee, LocalDate date, int profondeur, int duree, List myPlongeurs) {
+	public Plongee(Site lieu, Moniteur chefDePalanquee, LocalDate date, int profondeur, int duree) {
 		this.lieu = lieu;
 		this.chefDePalanquee = chefDePalanquee;
 		this.date = date;
 		this.profondeur = profondeur;
 		this.duree = duree;
-                this.myPlongeurs = myPlongeurs;
 	}
         
 
