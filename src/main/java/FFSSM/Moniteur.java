@@ -39,7 +39,6 @@ public class Moniteur extends Plongeur {
      */
     public void nouvelleEmbauche(Club employeur, LocalDate debutNouvelle) {   
          // TODO: Implémenter cette méthode
-        Moniteur m;
         Embauche embauche = new Embauche (debutNouvelle, this , employeur);
         myEmbauches.add(embauche);	    
     }
