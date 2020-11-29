@@ -24,7 +24,7 @@ public class Embauche {
      */
     public void terminer(LocalDate dateFin) {
          // TODO: Implémenter cette méthode
-        dateFin = this.fin;	    
+        this.fin=dateFin;
     }
     
     /**
