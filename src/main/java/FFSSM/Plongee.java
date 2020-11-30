@@ -49,8 +49,7 @@ public class Plongee {
 		// TODO: Implémenter cette méthode
                 
 		for (Plongeur participant : myPlongeurs){
-                   int nbLicences=participant.myLicences.size();
-                   for(int i = nbLicences-1;i<0;i--){
+                   for(int i = 0 ; i < this.myPlongeurs.size() ;i++){
                        if(participant.myLicences.get(i).estValide(this.getDate())){
                            break;
                        }
