@@ -47,20 +47,43 @@ public class FFSSMTest {
     }
     
     
- /* @Test
-   public void testEmployeurActuel(){
+   @Test
+   public void testEmployeurActuel() throws Exception {
        Moniteur moniteur3 = new Moniteur ("INSEE","Nom","Prenom","adresse","tel",LocalDate.of(1990, 9, 12),3,123);
        
         //On s'assure que ce moniteur n'a aucune embauche
        assertTrue(moniteur3.emplois().isEmpty(),
                "Le moniteur ne doit pas encore avoir d'emploi");
        
+       try{
+           moniteur3.employeurActuel(); 
+           //Si on arrive ici il n'y a pas d'exception, échec
+           fail();
+       } catch (Exception e){
+           //Si on arrive ici, il y a eu une exception, c'est ce qui est attendu
+       }
+   
+       //On attribu une nouvelle embauche au moniteur 
        moniteur3.nouvelleEmbauche(club, LocalDate.of(2020, 10, 10));
        
        assertEquals(club , moniteur3.employeurActuel(),
                "L'employeur actuel doit être club");
-   }*/
+       
+      Moniteur moniteur = new Moniteur ("INSEE","Nom","Prenom","adresse","tel",LocalDate.of(1990, 9, 12),3,123);
+      Embauche e1 = new Embauche (LocalDate.of(2020, 10, 10), moniteur, club);
+      e1.estTerminee();
+       
+       try{
+           moniteur.employeurActuel();
+           //Si on arrive ici il n'y a pas d'exception, échec
+           fail();
+       } catch (Exception e){
+           //Si on arrive ici, il y a eu une exception, c'est ce qui est attendu
+       } 
+   }
     
+   
+   
     @Test
     public void testAjouteParticipant(){
         //ajout d'un participant à la plongee
