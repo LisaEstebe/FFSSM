@@ -47,7 +47,7 @@ public class FFSSMTest {
     }
     
     
-  /* @Test
+  @Test
    public void testEmployeurActuel(){
        Moniteur moniteur3 = new Moniteur ("INSEE","Nom","Prenom","adresse","tel",LocalDate.of(1990, 9, 12),3,123);
        
@@ -59,7 +59,7 @@ public class FFSSMTest {
        
        assertEquals(club,moniteur3.employeurActuel(),
                "L'employeur actuel doit être club");
-   }*/
+   }
     
     @Test
     public void testAjouteParticipant(){
@@ -143,5 +143,18 @@ public class FFSSMTest {
                     "L'emploi e doit être terminé");
             
         }
+        
+        
+   @Test
+   public void testEstConforme(){
+       Licence lOk = new Licence (plongeur1, "numero", LocalDate.of(2020, 11, 20), 1, club);
+       Licence lNonConf = new Licence (plongeur1, "numero", LocalDate.of(2010, 11, 20), 1, club);
+       
+       assertTrue(lOk.estValide(LocalDate.now()),
+               "La licence doit être conforme");
+       
+       assertFalse(lNonConf.estValide(LocalDate.now()),
+               "La licence ne doit pas être conforme");
+   }
    
 }
