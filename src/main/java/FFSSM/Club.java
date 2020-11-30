@@ -36,7 +36,7 @@ public class Club {
         HashSet<Plongee> pNonConf = new HashSet<>();
         for (Plongee plongee : myPlongees) {
             int nbPlongees = this.myPlongees.size();
-            for (int i = nbPlongees - 1; i < 0; i--) {
+            for (int i = 0 ; i < this.myPlongees.size(); i++) {
                 if (plongee.estConforme() == false) {
                     pNonConf.add(plongee);
                 }
