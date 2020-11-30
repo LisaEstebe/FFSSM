@@ -27,8 +27,10 @@ public class Moniteur extends Plongeur {
          // TODO: Implémenter cette méthode
       if(emplois().isEmpty()) 
             throw new Exception("Aucun emploi");
+    
       if (emplois().get((emplois().size())-1).estTerminee()) 
             throw new Exception("Dernier emploi terminé");
+     
       return Optional.ofNullable(emplois().get((emplois().size())-1).getEmployeur());
       }
     
