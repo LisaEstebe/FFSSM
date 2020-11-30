@@ -25,7 +25,7 @@ public class FFSSMTest {
     public void setUp(){
         plongeur1 = new Plongeur ("001","Estebe","Lisa","Adresse","tel",LocalDate.of(2000,2,13),2);
         moniteur1 = new Moniteur ("002","Chevailler","Salome","Adresse","tel",LocalDate.of(2001,1,11),3,5);
-        club = new Club (moniteur1,"Les flots bleus","tel");
+        club = new Club (moniteur1,"club","tel");
         site1= new Site ("Calanques","Details");
         plongee1= new Plongee (site1, moniteur1, LocalDate.now(), 13, 2);
     }
@@ -64,17 +64,16 @@ public class FFSSMTest {
        }
    
        //On attribu une nouvelle embauche au moniteur 
-       moniteur3.nouvelleEmbauche(club, LocalDate.of(2020, 10, 10));
+      Embauche e1 = new Embauche (LocalDate.of(2020, 10, 10), moniteur3, club);
        
-       assertEquals(club , moniteur3.employeurActuel(),
+       assertEquals(moniteur3, e1.getEmploye(),
                "L'employeur actuel doit être club");
        
-      Moniteur moniteur = new Moniteur ("INSEE","Nom","Prenom","adresse","tel",LocalDate.of(1990, 9, 12),3,123);
-      Embauche e1 = new Embauche (LocalDate.of(2020, 10, 10), moniteur, club);
+     
       e1.estTerminee();
        
        try{
-           moniteur.employeurActuel();
+           moniteur3.employeurActuel();
            //Si on arrive ici il n'y a pas d'exception, échec
            fail();
        } catch (Exception e){
