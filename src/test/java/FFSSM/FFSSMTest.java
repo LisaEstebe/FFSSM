@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.*;
 
 /**
  *
@@ -24,28 +23,41 @@ public class FFSSMTest {
     
     @BeforeEach
     public void setUp(){
-        LocalDate date1 = LocalDate.of(2000,2,13);
-        LocalDate date2 = LocalDate.of(2001,1,11);
-        plongeur1 = new Plongeur ("001","Estebe","Lisa","Adresse","tel",date1,2);
-        moniteur1 = new Moniteur ("002","Chevailler","Salome","Adresse","tel",date2,3,5);
+        plongeur1 = new Plongeur ("001","Estebe","Lisa","Adresse","tel",LocalDate.of(2000,2,13),2);
+        moniteur1 = new Moniteur ("002","Chevailler","Salome","Adresse","tel",LocalDate.of(2001,1,11),3,5);
         club = new Club (moniteur1,"Les flots bleus","tel");
         site1= new Site ("Calanques","Details");
         plongee1= new Plongee (site1, moniteur1, LocalDate.now(), 13, 2);
     }
     
-   /* @Test
+ @Test
     public void testNouvelleEmbauche(){
-        LocalDate debut = LocalDate.of(2020,11,25);
-        moniteur1.nouvelleEmbauche(club, debut);
-        assertTrue(moniteur1.emplois().contains(this));
-    }*/
+     //On crée un nouveau moniteur qui n'a pas d'embauche
+        Moniteur moniteur2 = new Moniteur ("INSEE","Nom","Prenom","adresse","tel",LocalDate.of(1990, 9, 12),3,123);
+        
+       //On s'assure que ce moniteur n'a aucune embauche
+       assertTrue(moniteur2.emplois().isEmpty(),
+               "Le moniteur ne doit pas encore avoir d'emploi");
+       
+        //On attribu une nouvelle embauche à ce moniteur
+        moniteur2.nouvelleEmbauche(club, LocalDate.of(2020,11,25));
+        
+        assertFalse(moniteur2.emplois().isEmpty(), 
+                "La liste des emplois du moniteur ne doit pas être vide");
+    }
     
     
-   /*@Test
-   public void employeurActuel() throws Exception{
-       LocalDate debut = LocalDate.of(2020,11,25);
-       moniteur1.nouvelleEmbauche(club, debut);
-       assertEquals(club, moniteur1.employeurActuel(),
+  /* @Test
+   public void testEmployeurActuel(){
+       Moniteur moniteur3 = new Moniteur ("INSEE","Nom","Prenom","adresse","tel",LocalDate.of(1990, 9, 12),3,123);
+       
+        //On s'assure que ce moniteur n'a aucune embauche
+       assertTrue(moniteur3.emplois().isEmpty(),
+               "Le moniteur ne doit pas encore avoir d'emploi");
+       
+       moniteur3.nouvelleEmbauche(club, LocalDate.now());
+       
+       assertEquals(club,moniteur3.employeurActuel(),
                "L'employeur actuel doit être club");
    }*/
     
@@ -68,6 +80,22 @@ public class FFSSMTest {
                 "plongee1 doit apparaître");
     }
     
+    
+    @Test
+    public void testAjouteLicence(){
+        //On s'assure que le plongeur1 n'a pas encore de licence 
+        assertTrue(plongeur1.getLicence().isEmpty(),
+                "Le plongeur ne doit pas encore avoir de licence");
+        
+        //On ajoute une licence au plongeur1
+        plongeur1.ajouteLicence("numéro", LocalDate.now(), club);
+        
+ 
+        assertFalse(plongeur1.getLicence().isEmpty(),
+                "Le plongeur doit avoir une licence");
+    }
+    
+    
     @Test
     public void testLicenceValide(){
         //création d'une licence non conforme
@@ -78,22 +106,42 @@ public class FFSSMTest {
         
     }
     
-   /* @Test
+  @Test
     public void testPlongeesNonConformes(){
         //ajout d'une plongee conforme
         club.organisePlongee(plongee1);
         
         //création d'une plongée non conforme
         Plongeur plongeurNonConforme = new Plongeur ("numINSE", "Non-Conforme","Jean-Michel", "adresse", "tel", LocalDate.of(1990, 2, 10), 1);
-        Licence licenceNonConforme = new Licence (plongeurNonConforme, "numero", LocalDate.of(2010, 11, 20), 1, club);
         Plongee plongeeNonConforme = new Plongee (site1, moniteur1, LocalDate.now(), 10, 2);
         plongeeNonConforme.ajouteParticipant(plongeurNonConforme);
+        
+        //ajouter la licence au plongeur
+        plongeurNonConforme.ajouteLicence("numero", LocalDate.of(2010, 11, 20), club);
         
         //ajout d'un plongee non conforme
         club.organisePlongee(plongeeNonConforme);
         
-        assertEquals("plongeeNonConforme", club.plongeesNonConformes(),
+        assertTrue(club.plongeesNonConformes().contains(plongeeNonConforme),
                 "Le club a organisé une plongée non conforme"); 
-    }*/
+    }
+    
+    @Test
+        public void testTerminer(){
+            
+            Embauche e = new Embauche (LocalDate.of(2019, 12, 11), moniteur1, club);
+            
+            assertEquals(moniteur1, e.getEmploye(),
+                    "L'Embauche e emploi moniteur1");
+           
+            e.terminer(LocalDate.of(2020, 12, 11));
+            
+            assertFalse(moniteur1.emplois().contains(e),
+                    "L'emploi e s'est terminé le 11/12/2020");
+            
+            assertTrue(e.estTerminee(),
+                    "L'emploi e doit être terminé");
+            
+        }
    
 }
